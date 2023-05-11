@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping("/")
 public class TaskController {
@@ -13,7 +15,7 @@ public class TaskController {
     }
 
     @GetMapping("admin")
-    String pageAdmin() {
-        return "<h2>This is security page</h2>";
+    String pageAdmin(Principal principal) {
+        return "<h2>This is security page " + principal.getName() +"!</h2>";
     }
 }
